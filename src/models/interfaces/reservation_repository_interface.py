@@ -15,7 +15,7 @@ class ReservationInterface():
     def get_reservation_by_id(self, reservation_id: int): pass
 
     @abstractmethod
-    def update_reservation(self, reservation_id: int): pass
+    def update_reservation(self, reservation_id: int, fields: dict): pass
 
     @abstractmethod
     def delete_reservation(self, reservation_id: int): pass

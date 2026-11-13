@@ -15,7 +15,7 @@ class UserInterface():
     def get_user_by_id(self, user_id: int): pass
 
     @abstractmethod
-    def update_user(self, user_id: int): pass
+    def update_user(self, user_id: int, fields: dict): pass
 
     @abstractmethod
     def delete_user(self, user_id: int): pass

@@ -161,6 +161,7 @@ def update_user(id):
     password = response.get("password")
     hashed = bcrypt.hashpw(str.encode(password), bcrypt.gensalt()) if password else None
 
+    # adaptar a lógica para bater com o repository novo
     fields = ["password", "role"]
 
     for field in fields:
@@ -262,7 +263,8 @@ def update_hosting(id):
 
     if not hosting:
         return jsonify(resp("ERROR", "Hospedagem não encontrada!")), 404
-    
+
+    # adaptar a lógica para bater com o repository novo
     fields = ["name", "price", "available"]
 
     for field in fields:
@@ -389,7 +391,8 @@ def update_reservation(id):
 
     if current_user.role != "admin" and current_user.id != reservation.user_id:
         return jsonify(resp("ERROR", "Você não tem permissão para atualizar reservas de outros usuários!")), 403
-    
+
+    # adaptar a lógica para bater com o repository novo
     fields = ["start", "end"]
 
     for field in fields:
