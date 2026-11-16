@@ -1,8 +1,9 @@
 from src.models.interfaces.reservation_repository_interface import ReservationInterface
+from src.models.sqlite.settings.connect import DatabaseManager
 from src.models.sqlite.entities.reservation import Reservation
 
 class ReservationRepository(ReservationInterface):
-    def __init__(self, db_connection):
+    def __init__(self, db_connection: DatabaseManager):
         self.__db_connection = db_connection
 
     def create_reservation(self, start, end, user_id, hosting_id):

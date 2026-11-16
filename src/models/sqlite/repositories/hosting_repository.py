@@ -1,8 +1,9 @@
 from src.models.interfaces.hosting_repository_interface import HostingInterface
+from src.models.sqlite.settings.connect import DatabaseManager
 from src.models.sqlite.entities.hosting import Hosting
 
 class HostingRepository(HostingInterface):
-    def __init__(self, db_connection):
+    def __init__(self, db_connection: DatabaseManager):
         self.__db_connection = db_connection
 
     def create_hosting(self, name, price, available):
