@@ -44,6 +44,8 @@ class UserRepository(UserInterface):
                 for field, value in fields.items():
                     setattr(user, field, value)
 
+                db.session.commit()
+
         except Exception as ex:
             db.session.rollback()
             raise ex
@@ -52,6 +54,8 @@ class UserRepository(UserInterface):
         try:
             with self.__db_connection as db:
                 db.session.query(User).filter(User.id == user_id).delete()
+
+                db.session.commit()
 
         except Exception as ex:
             db.session.rollback()
