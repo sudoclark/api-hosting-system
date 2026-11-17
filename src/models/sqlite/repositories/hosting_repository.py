@@ -38,6 +38,8 @@ class HostingRepository(HostingInterface):
                 for field, value in fields.items():
                     setattr(hosting, field, value)
 
+                db.session.commit()
+
         except Exception as ex:
             db.session.rollback()
             raise ex
@@ -46,6 +48,8 @@ class HostingRepository(HostingInterface):
         try:
             with self.__db_connection as db:
                 db.session.query(Hosting).filter(Hosting.id == hosting_id).delete()
+
+                db.session.commit()
 
         except Exception as ex:
             db.session.rollback()

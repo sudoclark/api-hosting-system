@@ -26,7 +26,7 @@ class ReservationRepository(ReservationInterface):
 
     def get_reservation_by_id(self, reservation_id):
         with self.__db_connection as db:
-            reservation = db.session.query(Reservation).query(Reservation.id == reservation_id).first()
+            reservation = db.session.query(Reservation).filter(Reservation.id == reservation_id).first()
 
             return reservation
 
@@ -38,6 +38,8 @@ class ReservationRepository(ReservationInterface):
                 for field, value in fields.items():
                     setattr(reservation, field, value)
 
+                db.session.commit()
+
         except Exception as ex:
             db.session.rollback()
             raise ex
@@ -46,6 +48,8 @@ class ReservationRepository(ReservationInterface):
         try:
             with self.__db_connection as db:
                 db.session.query(Reservation).filter(Reservation.id == reservation_id).delete()
+
+                db.session.commit()
 
         except Exception as ex:
             db.session.rollback()
