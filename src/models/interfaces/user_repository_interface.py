@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class UserInterface():
+class UserInterface(ABC):
     """
     Interface dedicada às ações da entidade 'User'. É usado na construção
     e abstração do repositório.

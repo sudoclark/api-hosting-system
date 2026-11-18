@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class HostingInterface():
+class HostingInterface(ABC):
     """
     Interface dedicada às ações da entidade 'Hosting'. É usado na construção
     e abstração do repositório.

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class ReservationInterface():
+class ReservationInterface(ABC):
     """
     Interface dedicada às ações da entidade 'Reservation'. É usado na construção
     e abstração do repositório.
