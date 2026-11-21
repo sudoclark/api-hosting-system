@@ -15,6 +15,9 @@ class HostingInterface(ABC):
     def get_hosting_by_id(self, hosting_id: int): pass
 
     @abstractmethod
+    def get_hosting_by_name(self, hosting_name: str): pass
+
+    @abstractmethod
     def update_hosting(self, hosting_id: int, fields: dict): pass
 
     @abstractmethod

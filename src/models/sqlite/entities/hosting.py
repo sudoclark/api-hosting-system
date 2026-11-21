@@ -22,7 +22,7 @@ class Hosting(Base):
             "available": self.available
         }
 
-    def upgrade_availability(self, action: str):
+    def update_availability(self, action: str):
         if action == "book":
             self.available -= 1
         else:

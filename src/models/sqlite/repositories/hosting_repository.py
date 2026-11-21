@@ -30,6 +30,12 @@ class HostingRepository(HostingInterface):
             
             return hosting
 
+    def get_hosting_by_name(self, hosting_name):
+        with self.__db_connection as db:
+            hosting = db.session.query(Hosting).filter(Hosting.name == hosting_name).first()
+
+            return hosting
+
     def update_hosting(self, hosting_id, fields):
         try:
             with self.__db_connection as db:
