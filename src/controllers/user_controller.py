@@ -7,7 +7,7 @@ class UserController:
         self.__user_repository = user_repository
 
     def create_user(self, user_data: dict):
-        if user_data is None:
+        if not user_data:
             raise Exception("Dados inválidos, confirme os dados enviados.")
 
         username = user_data.get("username")
