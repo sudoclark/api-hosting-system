@@ -2,25 +2,7 @@ import pytest
 from unittest.mock import MagicMock
 
 from src.controllers.user_controller import UserController
-
-class MockUserEntity:
-    def __init__(self, id, username, password, role):
-        self.id = id
-        self.username = username
-        self.password = password
-        self.role = role
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "role": self.role
-        }
-
-JOE = MockUserEntity(id=1, username="Joe", password="123", role="user")
-ANNE = MockUserEntity(id=2, username="Anne", password="456", role="user")
-REQUESTER = MockUserEntity(id=3, username="Mary", password="123", role="admin")
-REQUESTER_USER_ROLE = MockUserEntity(id=4, username="Carl", password="123", role="user")
+from tests.controllers.mock_entities_schemas import REQUESTER, REQUESTER_USER_ROLE, JOE, ANNE
 
 class MockUserRepository:
     def __init__(self):

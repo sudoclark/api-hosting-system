@@ -2,28 +2,8 @@ import pytest
 from unittest.mock import MagicMock
 
 from src.controllers.hosting_controller import HostingController
-from tests.controllers.test_user_controller import MockUserEntity
-
-class MockHostingEntity:
-    def __init__(self, id, name, price, available):
-        self.id = id
-        self.name = name
-        self.price = price
-        self.available = available
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "price": self.price,
-            "available": self.available
-        }
-
-HOSTING_A = MockHostingEntity(id=1, name="Hosting A", price=100, available=3)
-HOSTING_B = MockHostingEntity(id=2, name="Hosting B", price=250, available=8)
-REQUESTER = MockUserEntity(id=3, username="Mary", password="123", role="admin")
-REQUESTER_USER_ROLE = MockUserEntity(id=4, username="Carl", password="123", role="user")
-
+from tests.controllers.mock_entities_schemas import REQUESTER, REQUESTER_USER_ROLE, HOSTING_A, HOSTING_B
+    
 class MockHostingRepository:
     def __init__(self):
         self.create_hosting = MagicMock()
