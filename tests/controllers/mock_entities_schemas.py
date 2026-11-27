@@ -1,3 +1,4 @@
+import bcrypt
 from datetime import datetime, timedelta
 
 class MockUserEntity:
@@ -48,9 +49,11 @@ class MockReservationEntity:
 
 mock_start = datetime.now() + timedelta(days=1)
 mock_end = mock_start + timedelta(days=3)
+hashed = bcrypt.hashpw(b"123", bcrypt.gensalt())
 
 JOE = MockUserEntity(id=1, username="Joe", password="123", role="user")
 ANNE = MockUserEntity(id=2, username="Anne", password="456", role="user")
+MARY = MockUserEntity(id=3, username="Mary", password=hashed, role="user")
 HOSTING_A = MockHostingEntity(id=1, name="Hosting A", price=100, available=3)
 HOSTING_B = MockHostingEntity(id=2, name="Hosting B", price=250, available=8)
 RESERVATION_A = MockReservationEntity(id=1, start=mock_start, end=mock_end, user_id=1, hosting_id=1)
